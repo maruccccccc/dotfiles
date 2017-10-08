@@ -30,9 +30,15 @@ function mkcd() {
   mkdir $1;
   cd $1;
 }
+function ak() {
+  eval `ssh-agent`
+  ssh-add ~/.ssh/github_id_rsa
+}
 
 shopt -u histappend
 PROMPT_COMMAND='share_history'
+
+if [ "$TERM" = xterm ]; then TERM=xterm-256color; fi
 
 export PS1="\[\e[36m\][\u:\h \w ] \[\e[33m\]$ \[\e[0m\]"
 export GREP_OPTIONS='--color=always'
