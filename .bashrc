@@ -56,7 +56,7 @@ alias gis='git status'
 alias gich='git checkout'
 alias gia='git add .'
 alias gic='git commit'
-alias gip="git push origin \$(git branch --contains | awk '{print \$2}'"
+alias gip="git push origin \$(git branch --contains | awk '{print \$2}')"
 alias ps='ps --sort=start_time'
 
 if [ "$TERM" = xterm ]; then TERM=xterm-256color; fi
