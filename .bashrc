@@ -22,6 +22,10 @@ function hs() {
   eval ${cmd};
   history -s $cmd
 }
+function hsc() {
+  cmd=$(history | sort -r | awk '{for(i=2;i<NF;i++){printf("%s%s",$i,OFS=" ")}print $NF;}' | awk '!a[$0]++' | sed -e '1,2d' | sed '/^hs/d' | peco --query $1)
+  echo -n $cmd | pbcopy
+}
 function share_history() {
   history -a
   history -c
