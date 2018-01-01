@@ -1,17 +1,18 @@
-
-PECO_VERSION='v0.5.1'
+PECO_VERSION='v0.5.2'
 
 case "${OSTYPE}" in
   darwin*)
     OS_TYPE="darwin"
+    ARCH_TYPE="zip"
     ;;
   linux*)
     OS_TYPE="linux"
+    ARCH_TYPE="tar.zip"
     ;;
 esac
 
 if [ ! -f /usr/local/bin/peco  ]; then
-  wget -O - "https://github.com/peco/peco/releases/download/${PECO_VERSION}/peco_${OS_TYPE}_amd64.tar.gz" | tar --directory /tmp -zxvf -
+  wget -O - "https://github.com/peco/peco/releases/download/${PECO_VERSION}/peco_${OS_TYPE}_amd64.${ARCH_TYPE}" | tar --directory /tmp -zxvf -
   sudo mv /tmp/peco_${OS_TYPE}_amd64/peco /usr/local/bin
   rm -rf /tmp/peco_${OS_TYPE}_amd64/
 fi
@@ -37,6 +38,26 @@ function ak() {
 
 shopt -u histappend
 PROMPT_COMMAND='share_history'
+
+alias ls='ls -G'
+alias sl='ls -G'
+alias ks='ls -G'
+alias ll='ls -lG'
+alias la='ls -laG'
+alias lls='ls -G'
+
+alias ivm='vim'
+alias vmi='vim'
+alias VIM='vim'
+
+alias r='fc -s'
+alias gba='git branch -vv'
+alias gis='git status'
+alias gich='git checkout'
+alias gia='git add .'
+alias gic='git commit'
+alias gip="git push origin \$(git branch --contains | awk '{print \$2}'"
+alias ps='ps --sort=start_time'
 
 if [ "$TERM" = xterm ]; then TERM=xterm-256color; fi
 
