@@ -7,7 +7,7 @@ case "${OSTYPE}" in
     ;;
   linux*)
     OS_TYPE="linux"
-    ARCH_TYPE="tar.zip"
+    ARCH_TYPE="tar.gz"
     ;;
 esac
 
